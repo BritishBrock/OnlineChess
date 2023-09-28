@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
 namespace Server
 {
     public class Program
@@ -19,6 +21,14 @@ namespace Server
                 app.UseHsts();
             }
 
+            app.MapGet("/start", (HttpRequest req, HttpResponse res) =>
+            {
+               return req.Query["num"];
+                
+                
+            });
+            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -29,6 +39,8 @@ namespace Server
             app.MapRazorPages();
 
             app.Run();
+
+            
         }
     }
 }
